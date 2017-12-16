@@ -11,14 +11,7 @@ func main() {
 
 	str := getMarketHTML()
 
-	r, err := regexp.Compile(`R\$`)
-
-	if err != nil {
-		fmt.Printf("There is a problem with your regexp.\n")
-		return
-	}
-
-	if r.MatchString(str) == true {
+	if regexp.MustCompile(`R\$`).MatchString(str) {
 		fmt.Printf("Found product price ")
 	} else {
 		fmt.Printf("NOT Found product price ")
