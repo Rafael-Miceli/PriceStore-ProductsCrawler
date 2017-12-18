@@ -19,6 +19,8 @@ func main() {
 
 	res := r.FindAllString(str, -1)
 
+	//prices :=
+
 	fmt.Printf("%v", res)
 
 }
