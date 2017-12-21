@@ -25,6 +25,8 @@ func main() {
 
 	fmt.Printf("%v", string(body))
 
+	resp.Body.Close()
+
 	//Não usar Regex!!!
 
 	// r, err := regexp.Compile(`R\$&nbsp;[0-9]+,[0-9]+`)
