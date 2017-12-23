@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+
+	"golang.org/x/net/html"
 )
 
 var (
@@ -26,6 +28,25 @@ func main() {
 	fmt.Printf("%v", string(body))
 
 	resp.Body.Close()
+
+	z := html.NewTokenizer(string(body))
+
+	for {
+		tt := z.Next()
+
+		switch {
+		case tt == html.ErrorToken:
+			// End of the document, we're done
+			return
+		case tt == html.StartTagToken:
+			t := z.Token()
+
+			isAnchor := t.Data == "a"
+			if isAnchor {
+				fmt.Println("We found a link!")
+			}
+		}
+	}
 
 	//Não usar Regex!!!
 
