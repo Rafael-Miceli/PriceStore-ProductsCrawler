@@ -24,12 +24,11 @@ func main() {
 	}
 
 	body, err := ioutil.ReadAll(resp.Body)
+	z := html.NewTokenizer(resp.Body)
 
 	fmt.Printf("%v", string(body))
 
 	resp.Body.Close()
-
-	z := html.NewTokenizer(string(body))
 
 	for {
 		tt := z.Next()
