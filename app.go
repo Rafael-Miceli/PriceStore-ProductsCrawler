@@ -28,9 +28,10 @@ func main() {
 
 	//fmt.Printf("%v", string(body))
 
-	resp.Body.Close()
+	//resp.Body.Close()
 
 	fmt.Println("Preparando para iterar sobre html")
+	fmt.Println("Z ", z)
 
 	for {
 		tt := z.Next()
@@ -53,6 +54,8 @@ func main() {
 			}
 		}
 	}
+
+	resp.Body.Close()
 
 	//Não usar Regex!!!
 
