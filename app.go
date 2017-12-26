@@ -23,22 +23,29 @@ func main() {
 		fmt.Print(err)
 	}
 
-	body, err := ioutil.ReadAll(resp.Body)
+	//body, err := ioutil.ReadAll(resp.Body)
 	z := html.NewTokenizer(resp.Body)
 
-	fmt.Printf("%v", string(body))
+	//fmt.Printf("%v", string(body))
 
 	resp.Body.Close()
+
+	fmt.Println("Preparando para iterar sobre html")
 
 	for {
 		tt := z.Next()
 
+		fmt.Println("tt ", tt)
+
 		switch {
 		case tt == html.ErrorToken:
+			fmt.Println("Fim do html")
 			// End of the document, we're done
 			return
 		case tt == html.StartTagToken:
 			t := z.Token()
+
+			fmt.Println("t.Data ", t.Data)
 
 			isAnchor := t.Data == "a"
 			if isAnchor {
