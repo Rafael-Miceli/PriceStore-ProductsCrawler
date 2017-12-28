@@ -36,8 +36,6 @@ func main() {
 	for {
 		tt := z.Next()
 
-		fmt.Println("tt ", tt)
-
 		switch {
 		case tt == html.ErrorToken:
 			fmt.Println("Fim do html")
@@ -46,7 +44,8 @@ func main() {
 		case tt == html.StartTagToken:
 			t := z.Token()
 
-			fmt.Println("t.Data ", t.Data)
+			fmt.Println("t ", t)
+			//fmt.Println("t.Data ", t.Data)
 
 			isAnchor := t.Data == "a"
 			if isAnchor {
