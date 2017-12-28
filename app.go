@@ -44,12 +44,21 @@ func main() {
 		case tt == html.StartTagToken:
 			t := z.Token()
 
-			fmt.Println("t ", t)
+			//fmt.Println("t ", t)
+
 			//fmt.Println("t.Data ", t.Data)
 
 			isAnchor := t.Data == "a"
 			if isAnchor {
 				fmt.Println("We found a link!")
+
+				for _, element := range t.Attr {
+
+					if element.Key == "title" {
+						fmt.Println("element ", element)
+					}
+
+				}
 			}
 		}
 	}
